@@ -1,0 +1,53 @@
+Conferences:
+
+ACL Special Interest Group on Biomedical Natural Language Processing
+    https://aclweb.org/aclwiki/SIGBIOMED
+  
+BioNLP Workshop
+    SIGBIOMED
+    BIONLP 2019 
+Florence, Italy, Thursday, August 1, 2019  
+    https://aclweb.org/aclwiki/BioNLP_Workshop
+    
+    
+    
+Resources:
+"Biomedical Event Extraction Using Convolutional Neural Networks and Dependency Parsing"
+Jari Björne / TEES CNN BioNLP18
+TEES : Turku Event Extraction System
+    https://turkunlp.org/bionlp.html
+    http://jbjorne.github.io/TEES/
+    https://github.com/jbjorne/TEES/wiki/TEES-CNN-BioNLP18
+    
+    
+    
+Medlexicon:
+    https://www.medilexicon.com/dictionary/i
+    https://www.medilexicon.com/dictionary
+    https://www.medicalnewstoday.com/
+    
+    
+    
+UFAL corpus
+    https://ufal.mff.cuni.cz/ufal_medical_corpus
+    http://ufal.mff.cuni.cz/ufal_medical_corpus
+    
+    http://opus.nlpl.eu/EMEA.php
+    http://opus.nlpl.eu/EMEA.php
+    
+    http://opus.nlpl.eu/
+    https://www.ema.europa.eu/en
+    
+    
+MEDLINE/PubMed Data Documentation
+    https://www.ncbi.nlm.nih.gov/pubmed/
+    https://www.nlm.nih.gov/databases/download/pubmed_medline.html
+    https://www.nlm.nih.gov/databases/download/pubmed_medline_documentation.html
+    https://www.ncbi.nlm.nih.gov/books/NBK3827/#pubmedhelp.How_to_Get_the_Journal_Articl
+    
+    
+Articles:
+    From POS tagging to dependency parsing for biomedical event extraction . 2019 . Dat Quoc Nguyen* and Karin Verspoor
+    https://bmcbioinformatics.biomedcentral.com/track/pdf/10.1186/s12859-019-2604-0
+    
+    
