@@ -1,0 +1,431 @@
+
+<!-- saved from url=(0064)chrome-extension://mciiogijehkdemklbdcbfkefimifhecn/ui/index.htm -->
+<html class="fs-14px mdl-js" style="font-size: 14px;"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>Chrono Download Manager</title>
+  
+  <meta name="google" value="notranslate">
+  <meta http-equiv="no-cache">
+  <meta http-equiv="Expires" content="-1">
+  <meta http-equiv="Cache-Control" content="no-cache">
+  <meta http-equiv="PRAGMA" content="NO-CACHE">
+  
+
+  <script type="text/javascript" src="chrome-extension://mciiogijehkdemklbdcbfkefimifhecn/libs/jquery-2.1.0.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="chrome-extension://mciiogijehkdemklbdcbfkefimifhecn/fonts/md.css">
+  <link rel="stylesheet" type="text/css" href="chrome-extension://mciiogijehkdemklbdcbfkefimifhecn/libs/mdl/material.indigo-lime.min.css">
+  <script type="text/javascript" src="chrome-extension://mciiogijehkdemklbdcbfkefimifhecn/ui/ui.min.js"></script>
+<link rel="stylesheet" type="text/css" href="chrome-extension://mciiogijehkdemklbdcbfkefimifhecn/ui/ui.min.css">
+
+
+  <style id="chronoPreviewFont">
+  </style>
+<style type="text/css" rel="stylesheet">.slickgrid_630168 .slick-header-column { left: 1000px; } .slickgrid_630168 .slick-top-panel { height:25px; } .slickgrid_630168 .grid-inner-top-panel { height:110px; } .slickgrid_630168 .slick-headerrow-columns { height:0px; } .slickgrid_630168 .slick-cell { height:99px; text-align:center; vertical-align: middle; } .slickgrid_630168 .slick-row { height:99px; line-height:99px; } .slickgrid_630168 .l0 { } .slickgrid_630168 .r0 { }</style></head>
+<body>
+
+<div id="dy_bg" style="display:none"></div>
+
+
+
+<div class="mdl-toast">
+<div class="mdl-toast--content"></div>
+</div>
+<div id="dy_tot_wrap" class="ui-layout-container" style="overflow: hidden; position: relative;">
+
+  <div id="dy_tbar_wrap" class="ui-layout-north undraggable ui-layout-pane ui-layout-pane-north" style="position: absolute; margin: 0px; bottom: auto; width: auto; z-index: 0; top: 0px; left: 0px; right: 0px; height: 80px; display: block; visibility: visible;">
+
+    <div class="mdl-layout__header-row">
+    
+      <div class="mdl-layout-title">
+        <img style="width: 26px;height: 26px;vertical-align: middle; margin-right: 8px;" src="chrome-extension://mciiogijehkdemklbdcbfkefimifhecn/icons/logo/26.png">
+        <span style="font-size: 28px;vertical-align: middle;font-family: tahoma,Roboto;">
+          Chrono
+        </span>
+      </div>
+
+      <div id="dy_tbar" style="position: relative;">
+        <button id="dy_tbar_add" class="mdl-button mdl-js-button mdl-button--icon mdl-button--large" data-upgraded=",MaterialButton">
+          <i class="tbar-icon-add"></i>
+        </button>
+        <button id="dy_tbar_start" class="mdl-button mdl-js-button mdl-button--icon mdl-button--large" disabled="disabled" data-upgraded=",MaterialButton">
+          <i class="tbar-icon-start"></i>
+        </button>
+        <button id="dy_tbar_pause" class="mdl-button mdl-js-button mdl-button--icon mdl-button--large" disabled="disabled" data-upgraded=",MaterialButton">
+          <i class="tbar-icon-pause"></i>
+        </button>
+        <button id="dy_tbar_restart" class="for_trash mdl-button mdl-js-button mdl-button--icon mdl-button--large" disabled="disabled" data-upgraded=",MaterialButton">
+          <i class="tbar-icon-restart"></i>
+        </button>
+        <button id="dy_tbar_startall" class="mdl-button mdl-js-button mdl-button--icon mdl-button--large" data-upgraded=",MaterialButton">
+          <i class="tbar-icon-start-all"></i>
+        </button>
+        <button id="dy_tbar_pauseall" class="mdl-button mdl-js-button mdl-button--icon mdl-button--large" data-upgraded=",MaterialButton">
+          <i class="tbar-icon-pause-all"></i>
+        </button>
+        <button id="dy_tbar_trash" class="mdl-button mdl-js-button mdl-button--icon mdl-button--large" disabled="disabled" data-upgraded=",MaterialButton">
+          <i class="tbar-icon-trash"></i>
+        </button>
+        <button id="dy_tbar_restore" class="only_for_trash for_trash mdl-button mdl-js-button mdl-button--icon mdl-button--large" disabled="disabled" data-upgraded=",MaterialButton">
+          <i class="tbar-icon-restore"></i>
+        </button>
+        <button id="dy_tbar_delete" class="for_trash mdl-button mdl-js-button mdl-button--icon mdl-button--large" disabled="disabled" data-upgraded=",MaterialButton">
+          <i class="tbar-icon-delete"></i>
+        </button>
+
+        <button class="for_trash expand-hidable mdl-button mdl-js-button mdl-button--icon mdl-button--large" disabled="disabled" data-upgraded=",MaterialButton">
+          
+        </button>
+        <button id="dy_tbar_options" class="for_trash expand-hidable mdl-button mdl-js-button mdl-button--icon mdl-button--large" data-upgraded=",MaterialButton">
+          <i class="tbar-icon-options"></i>
+          
+        </button>
+        <button id="dy_tbar_help" class="for_trash expand-hidable mdl-button mdl-js-button mdl-button--icon mdl-button--large" data-upgraded=",MaterialButton">
+          <i class="tbar-icon-help"></i>
+        </button>
+        
+        <div class="mdl-menu__container is-upgraded"><div class="mdl-menu__outline mdl-menu--bottom-right"></div><div id="dropdown-help" tabindex="-1" class="mdl-menu mdl-menu--bottom-right mdl-js-menu" for="dy_tbar_help" data-upgraded=",MaterialMenu">
+          <div class="mdl-menu__item" id="btn_help_about" tabindex="0">About</div>
+          <div class="mdl-menu__item" id="btn_help_help" tabindex="0">Get help</div>
+          <div class="mdl-menu__item" id="btn_help_faq" tabindex="0">FAQ</div>
+          <a class="mdl-menu__item" id="btn_help_feedback" href="http://bugs.chronodownloader.net/" target="_blank" tabindex="0">Report an issue</a>
+          <a class="mdl-menu__item" target="_blank" href="http://bugs.chronodownloader.net/changelog_page.php" tabindex="0">Change log</a>
+        </div></div>
+
+
+      </div>
+
+      <div class="expand-hidable mdl-layout-spacer"></div>
+
+      <div id="dy_searchbox" class="mdl-click-expander">
+        <button id="dy_searchbox_btn" class="mdl-button mdl-js-button mdl-button--icon" data-upgraded=",MaterialButton">
+          <i id="dy_searchbox_open_icon" class="material-icons status-tooltip">search</i>
+          
+        </button>
+        <div class="mdl-click-expander--holder">
+          <span id="dy_searchbox_input_wrap" class="mdl-textfield mdl-js-textfield is-upgraded" data-upgraded=",MaterialTextfield">
+            <input id="dy_searchbox_input" class="mdl-textfield__input fs-1_1rem" type="text">
+            <label class="mdl-textfield__label fs-1_1rem" for="dy_searchbox_input">Search downloads</label>
+          </span>
+
+          <label id="opt_search_fuzzy" class="mdl-icon-toggle mdl-js-icon-toggle mdl-js-ripple-effect status-tooltip status-tooltip--keep mdl-js-ripple-effect--ignore-events is-upgraded" for="cb_search_fuzzy" title="Fuzzy match" data-upgraded=",MaterialIconToggle,MaterialRipple">
+            <input type="checkbox" id="cb_search_fuzzy" class="mdl-icon-toggle__input">
+            <span class="mdl-icon-toggle__label blur" style="font-size: 16px;">Fz</span>
+          <span class="mdl-icon-toggle__ripple-container mdl-js-ripple-effect mdl-ripple--center" data-upgraded=",MaterialRipple"><span class="mdl-ripple"></span></span></label>
+          <label class="mdl-icon-toggle mdl-js-icon-toggle mdl-js-ripple-effect status-tooltip status-tooltip--keep mdl-js-ripple-effect--ignore-events is-upgraded" for="cb_search_case" title="Case sensitive" data-upgraded=",MaterialIconToggle,MaterialRipple">
+            <input type="checkbox" id="cb_search_case" class="mdl-icon-toggle__input">
+            <span class="mdl-icon-toggle__label" style="font-size: 16px;">Aa</span>
+          <span class="mdl-icon-toggle__ripple-container mdl-js-ripple-effect mdl-ripple--center" data-upgraded=",MaterialRipple"><span class="mdl-ripple"></span></span></label>
+          
+        </div>
+      </div>
+      
+      
+    </div>
+
+  </div>           
+ 
+  <div id="dy_lnav" class="ui-layout-west undraggable ui-layout-pane ui-layout-pane-west" style="position: absolute; margin: 0px; right: auto; z-index: 0; left: 0px; width: 175px; display: block; visibility: visible; top: 80px; bottom: 33px; height: 910px;">
+    <div>
+      <div id="dy_lnav_filters" class="dd"><ul class="mdlx-list fs-1_1rem"><li class="selected">        <span tabindex="0" class="nav-filter" id="filterTaskAll" filter_str="true">All Tasks</span></li><li class="dd-item" data-rid="1">
+          <span tabindex="0" class="nav-filter dd-handle" filter_str="*time_add*&gt;=[3_days_ago]">
+            Recent
+          </span></li><li class="dd-item" data-rid="2">
+          <span tabindex="0" class="nav-filter dd-handle" filter_str="*state*!=[finished]&amp;&amp;*state*!=[interrupted]">
+            Downloading
+          </span></li><li class="dd-item" data-rid="3">
+          <span tabindex="0" class="nav-filter dd-handle" filter_str="*state*==[finished]">
+            Finished
+          </span><ul class="mdlx-list fs-1_1rem"><li class="dd-item" data-rid="4">
+          <span tabindex="0" class="nav-filter dd-handle" filter_str="{r_done}&amp;&amp;*ext*.is([ext_image])">
+            Image
+          </span></li><li class="dd-item" data-rid="5">
+          <span tabindex="0" class="nav-filter dd-handle" filter_str="{r_done}&amp;&amp;*ext*.is([ext_video])">
+            Video
+          </span></li><li class="dd-item" data-rid="6">
+          <span tabindex="0" class="nav-filter dd-handle" filter_str="{r_done}&amp;&amp;*ext*.is([ext_audio])">
+            Audio
+          </span></li><li class="dd-item" data-rid="7">
+          <span tabindex="0" class="nav-filter dd-handle" filter_str="{r_done}&amp;&amp;*ext*.is([ext_doc])">
+            Document
+          </span></li><li class="dd-item" data-rid="8">
+          <span tabindex="0" class="nav-filter dd-handle" filter_str="{r_done}&amp;&amp;!(*ext*.is([ext_audio])||*ext*.is([ext_video])||*ext*.is([ext_image])||*ext*.is([ext_doc]))">
+            Other
+          </span></li></ul></li><li class="dd-item" data-rid="9">
+          <span tabindex="0" class="nav-filter dd-handle" filter_str="*state*==[interrupted]">
+            Failed
+          </span></li> </ul></div>
+      <div>
+        <ul class="mdlx-list fs-1_1rem">
+          <li>
+            <span id="dy_lnav_filter_recycled" class="nav-filter" tabindex="0">
+              <i class="material-icons">delete</i>
+              <span>Bin</span>
+            </span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div id="dy_tb" class="ui-layout-center list_mode slickgrid_630168 ui-widget ui-layout-pane ui-layout-pane-center" style="overflow: hidden; outline: 0px; position: absolute; margin: 0px; z-index: 0; display: block; visibility: visible; top: 80px; bottom: 33px; left: 176px; right: 0px; width: 1707px; height: 910px;"><div class="details_open_toggler hidden"></div><div tabindex="0" hidefocus="" style="position:fixed;width:0;height:0;top:0;left:0;outline:0;"></div><div class="slick-header ui-state-default" style="overflow:hidden;position:relative;"><div class="slick-header-columns" style="left: -1000px; width: 2707px;" unselectable="on"><div class="ui-state-default slick-header-column slick-header-sortable" id="slickgrid_6301680" title="" style="width: 1707px;"><span class="slick-column-name"></span><span class="slick-sort-indicator"></span><div class="slick-resizable-handle"></div></div></div></div><div class="slick-headerrow ui-state-default" style="overflow: hidden; position: relative; display: none;"><div class="slick-headerrow-columns" style="width: 1707px;"></div><div style="display: block; height: 1px; position: absolute; top: 0px; left: 0px; width: 1707px;"></div></div><div class="slick-top-panel-scroller ui-state-default" style="overflow: hidden; position: relative; display: none;"><div class="slick-top-panel" style="width:10000px"></div></div><div class="slick-viewport" style="width: 100%; overflow: auto; outline: 0px; position: relative; height: 910px;"><div class="grid-inner-top-panel" style="display: none;"></div><div class="grid-canvas" style="width: 1707px; height: 910px;"></div></div><div tabindex="0" hidefocus="" style="position:fixed;width:0;height:0;top:0;left:0;outline:0;"></div></div>
+  <div id="dy_info_panel" class="ui-layout-east ui-layout-pane ui-layout-pane-east" style="position: absolute; margin: 0px; left: auto; z-index: 0; right: 0px; width: 430px; top: 80px; bottom: 33px; height: 904px; display: none; visibility: visible;">
+    <div id="dy_details_tab">
+      <div>
+        <div style="font-size:20px;text-overflow: ellipsis;white-space: nowrap;overflow: hidden;text-align: center;margin-top: 30px;">No item selected.</div>
+        <div style="text-align: center;margin-top: 36px;">
+          <i class="material-icons" style="font-size: 112px;color: rgba(60,60,60,0.25);">insert_drive_file</i>
+        </div>
+      </div>
+      <div style="overflow:auto;display:none">
+        <div class="undraggable" style="line-height: 36px;padding: 16px 0;position: relative;">
+          <div id="dy_ti_iconURL32" style="height: 32px; width: 32px; margin: 2px;position: absolute;">
+          </div>
+          <div id="dy_ti_filename" data-fext="ext" field="filename" index="-1" class="fext-ellipsis dy_ti_btn dy_ti_link_like focus-click status-tooltip" tabindex="0">
+            <span>
+              Filename
+            </span>
+          </div>
+          <div id="dy_ti_folder_tr">
+            <div id="dy_ti_folder" tabindex="0" index="-1" field="folder" class="dy_ti_btn focus-click break-all dy_ti_link_like">
+              Folder
+            </div>
+          </div>
+        </div>
+
+        <div id="dy_details_tab_preview_wrap">
+          
+          <div id="dy_details_tab_preview_box">
+          </div>
+        </div>
+        <div style="border-top:1px solid rgba(60,60,60,0.15)"></div>
+
+        <table id="dy_details_table" border="0" cellspacing="1" cellpadding="3"><tbody><tr id="dy_ti_url_tr">
+          <td class="dy_ti_label">
+            URL
+          </td><td class="dy_ti_value"><span id="dy_ti_url" class=" mdl--accent break-all"></span><div class="dy_ti_btn_wrap">
+             <button class="dy_ti_btn mdl-button mdl-js-button mdl-button--icon undraggable" index="0" field="url" title="Copy link" data-upgraded=",MaterialButton">
+                <img src="chrome-extension://mciiogijehkdemklbdcbfkefimifhecn/icons/copy.png">
+             </button>
+          </div></td></tr><tr id="dy_ti_eurl_tr">
+          <td class="dy_ti_label">
+            Redirection
+          </td><td class="dy_ti_value"><span id="dy_ti_eurl" class=" mdl--accent break-all"></span><div class="dy_ti_btn_wrap">
+             <button class="dy_ti_btn mdl-button mdl-js-button mdl-button--icon undraggable" index="0" field="eurl" title="Copy link" data-upgraded=",MaterialButton">
+                <img src="chrome-extension://mciiogijehkdemklbdcbfkefimifhecn/icons/copy.png">
+             </button>
+          </div></td></tr><tr id="dy_ti_referer_tr">
+          <td class="dy_ti_label">
+            Referrer
+          </td><td class="dy_ti_value"><a id="dy_ti_referer" target="_blank" class="dy_ti_link_like break-all"></a><div class="dy_ti_btn_wrap">
+             <button class="dy_ti_btn mdl-button mdl-js-button mdl-button--icon undraggable" index="0" field="referer" title="Copy link" data-upgraded=",MaterialButton">
+                <img src="chrome-extension://mciiogijehkdemklbdcbfkefimifhecn/icons/copy.png">
+             </button>
+          </div></td></tr><tr id="dy_ti_naming_tr">
+          <td class="dy_ti_label">
+            Naming mask
+          </td><td class="dy_ti_value"><span id="dy_ti_naming" class=" "></span></td></tr><tr id="dy_ti_size_tr">
+          <td class="dy_ti_label">
+            File size
+          </td><td class="dy_ti_value"><span id="dy_ti_size" class=" "></span></td></tr><tr id="dy_ti_finished_bytes_tr">
+          <td class="dy_ti_label">
+            Downloaded
+          </td><td class="dy_ti_value"><span id="dy_ti_finished_bytes" class=" "></span></td></tr><tr id="dy_ti_state_tr">
+          <td class="dy_ti_label">
+            Status
+          </td><td class="dy_ti_value"><span id="dy_ti_state" class=" "></span></td></tr><tr id="dy_ti_avgspeed_tr">
+          <td class="dy_ti_label">
+            Average speed
+          </td><td class="dy_ti_value"><span id="dy_ti_avgspeed" class=" "></span></td></tr><tr id="dy_ti_time_add_tr">
+          <td class="dy_ti_label">
+            Create time
+          </td><td class="dy_ti_value"><span id="dy_ti_time_add" class=" "></span></td></tr><tr id="dy_ti_time_finish_tr">
+          <td class="dy_ti_label">
+            Finish time
+          </td><td class="dy_ti_value"><span id="dy_ti_time_finish" class=" "></span></td></tr><tr id="dy_ti_time_elapsed_tr">
+          <td class="dy_ti_label">
+            Time elapsed
+          </td><td class="dy_ti_value"><span id="dy_ti_time_elapsed" class=" "></span></td></tr><tr id="dy_ti_desc_tr">
+          <td class="dy_ti_label">
+            Remarks
+          </td><td class="dy_ti_value"><textarea rows="5" id="dy_ti_desc"></textarea></td></tr></tbody></table>
+      </div>
+    </div>
+    
+  </div>
+    
+  <div class="ui-layout-south ui-layout-pane ui-layout-pane-south" style="position: absolute; margin: 0px; top: auto; width: auto; z-index: 0; bottom: 0px; left: 0px; right: 0px; height: 33px; display: block; visibility: visible;">
+    <div id="dy_status_bar" class="undraggable" style="position: relative;">
+      <button id="dy_status_btnbg" class="dy_status_toolbtn mdl-button mdl-js-button mdl-button--icon blink-anim" data-upgraded=",MaterialButton">
+        <i class="sbar-icon-bg"></i>
+      </button>
+
+      <div class="mdl-menu__container is-upgraded"><div class="mdl-menu__outline mdl-menu--top-left"></div><div id="dropdown-change-bg" for="dy_status_btnbg" tabindex="-1" class="mdl-menu mdl-menu--top-left mdl-js-menu" data-upgraded=",MaterialMenu">
+        <div class="mdl-menu__panel">
+          <div id="bg-enable-title">Change background</div>
+          <div id="bg-enable-wrap">
+            <label for="bg-enable" class="mdl-checkbox mdl-js-checkbox is-upgraded" data-upgraded=",MaterialCheckbox">
+              <input class="mdl-checkbox__input" type="checkbox" id="bg-enable">
+              <span class="mdl-checkbox__label">Enable</span>
+            <span class="mdl-checkbox__focus-helper"></span><span class="mdl-checkbox__box-outline"><span class="mdl-checkbox__tick-outline"></span></span></label>
+            <i class="md-qmark material-icons" id="qm-enableBG">live_help</i>
+            <div for="qm-enableBG" class="md-qmark-tip mdl-tooltip mdl-tooltip--large" data-upgraded=",MaterialTooltip">This feature is experimental. Due to certain issue of Chrome, enabling background may increase memory usage dramatically.</div>
+          </div>
+          <div id="bg-chooser-wrap" class="disableme">
+            <div id="bg-colpicker">
+              <label for="bg-ccolor">Solid colour</label> <input id="bg-ccolor" type="hidden" name="bg-ccolor" value="#ffffff" disabled=""><div class="colorPicker-picker" style="background-color: rgb(255, 255, 255);">&nbsp;</div><div id="colorPicker_palette-0" class="colorPicker-palette" style="display: none;"><div class="colorPicker-swatch" style="background-color: rgb(0, 0, 0);">&nbsp;</div><div class="colorPicker-swatch" style="background-color: rgb(153, 51, 0);">&nbsp;</div><div class="colorPicker-swatch" style="background-color: rgb(51, 51, 0);">&nbsp;</div><div class="colorPicker-swatch" style="background-color: rgb(0, 0, 128);">&nbsp;</div><div class="colorPicker-swatch" style="background-color: rgb(51, 51, 153);">&nbsp;</div><div class="colorPicker-swatch" style="background-color: rgb(51, 51, 51);">&nbsp;</div><div class="colorPicker-swatch" style="background-color: rgb(128, 0, 0);">&nbsp;</div><div class="colorPicker-swatch" style="background-color: rgb(255, 102, 0);">&nbsp;</div><div class="colorPicker-swatch" style="background-color: rgb(128, 128, 0);">&nbsp;</div><div class="colorPicker-swatch" style="background-color: rgb(0, 128, 0);">&nbsp;</div><div class="colorPicker-swatch" style="background-color: rgb(0, 128, 128);">&nbsp;</div><div class="colorPicker-swatch" style="background-color: rgb(0, 0, 255);">&nbsp;</div><div class="colorPicker-swatch" style="background-color: rgb(102, 102, 153);">&nbsp;</div><div class="colorPicker-swatch" style="background-color: rgb(128, 128, 128);">&nbsp;</div><div class="colorPicker-swatch" style="background-color: rgb(255, 0, 0);">&nbsp;</div><div class="colorPicker-swatch" style="background-color: rgb(255, 153, 0);">&nbsp;</div><div class="colorPicker-swatch" style="background-color: rgb(153, 204, 0);">&nbsp;</div><div class="colorPicker-swatch" style="background-color: rgb(51, 153, 102);">&nbsp;</div><div class="colorPicker-swatch" style="background-color: rgb(51, 204, 204);">&nbsp;</div><div class="colorPicker-swatch" style="background-color: rgb(51, 102, 255);">&nbsp;</div><div class="colorPicker-swatch" style="background-color: rgb(128, 0, 128);">&nbsp;</div><div class="colorPicker-swatch" style="background-color: rgb(153, 153, 153);">&nbsp;</div><div class="colorPicker-swatch" style="background-color: rgb(255, 0, 255);">&nbsp;</div><div class="colorPicker-swatch" style="background-color: rgb(255, 204, 0);">&nbsp;</div><div class="colorPicker-swatch" style="background-color: rgb(255, 255, 0);">&nbsp;</div><div class="colorPicker-swatch" style="background-color: rgb(0, 255, 0);">&nbsp;</div><div class="colorPicker-swatch" style="background-color: rgb(0, 255, 255);">&nbsp;</div><div class="colorPicker-swatch" style="background-color: rgb(0, 204, 255);">&nbsp;</div><div class="colorPicker-swatch" style="background-color: rgb(153, 51, 102);">&nbsp;</div><div class="colorPicker-swatch" style="background-color: rgb(192, 192, 192);">&nbsp;</div><div class="colorPicker-swatch" style="background-color: rgb(255, 153, 204);">&nbsp;</div><div class="colorPicker-swatch" style="background-color: rgb(255, 204, 153);">&nbsp;</div><div class="colorPicker-swatch" style="background-color: rgb(255, 255, 153);">&nbsp;</div><div class="colorPicker-swatch" style="background-color: rgb(204, 255, 255);">&nbsp;</div><div class="colorPicker-swatch" style="background-color: rgb(153, 204, 255);">&nbsp;</div><div class="colorPicker-swatch" style="background-color: rgb(255, 255, 255);">&nbsp;</div><div class="colorPicker_hexWrap"><label for="colorPicker_hex-0">Hex</label><input type="text" id="colorPicker_hex-0" value="#ffffff" disabled=""></div></div>
+            </div>
+            <div>
+              <div>Choose image</div>
+              <div id="bg-provided"></div>
+            </div>
+            
+            <div>
+              <div>
+                <span class="vmiddle">Customised image URL</span>
+                <i class="md-qmark material-icons" id="mytip-url">live_help</i>
+                <div id="mytip-url-message" for="mytip-url" class="md-qmark-tip mdl-tooltip mdl-tooltip--large mdl-tooltip--top" data-upgraded=",MaterialTooltip">Enter a web URL, or full path of an image on your computer (for local file, you need to enable file access for Chrono first, click the question mark to see how)</div>
+              </div>
+              <div id="bg-url-wrap">
+                <div class="mdl-textfield mdl-js-textfield is-disabled is-upgraded" data-upgraded=",MaterialTextfield">
+                  <input type="text" id="bg-url-input" class="mdl-textfield__input" disabled="">
+                  <label class="mdl-textfield__label" for="bg-url-input">http://</label>
+                </div>
+                <div class="mdl-button mdl-js-button" id="bg-weburl-btn" data-upgraded=",MaterialButton">Apply</div>
+              </div>
+            </div>
+            <div id="bg-image-params">
+              <div class="bg-image-param">
+                <div class="mdl-slider__container"><input class="mdl-slider mdl-js-slider is-upgraded" type="range" id="bg-opacity" min="0" max="1.0" step="0.05" disabled="" data-upgraded=",MaterialSlider"><div class="mdl-slider__background-flex"><div class="mdl-slider__background-lower" style="flex: 0.35 1 0%;"></div><div class="mdl-slider__background-upper" style="flex: 0.65 1 0%;"></div></div></div>
+                <span class="bg-image-param-label">Opacity</span>
+              </div>
+              <div class="bg-image-param">
+                <div class="mdl-slider__container"><input class="mdl-slider mdl-js-slider is-lowest-value is-upgraded" type="range" id="bg-blur" min="0" max="20" disabled="" data-upgraded=",MaterialSlider"><div class="mdl-slider__background-flex"><div class="mdl-slider__background-lower" style="flex: 0 1 0%;"></div><div class="mdl-slider__background-upper" style="flex: 1 1 0%;"></div></div></div>
+                <span class="bg-image-param-label">
+                  <span class="vmiddle">Blur</span>
+                  <i class="md-qmark material-icons" id="qm-blurBG">live_help</i>
+                  <div for="qm-blurBG" class="md-qmark-tip mdl-tooltip mdl-tooltip--large mdl-tooltip--top" data-upgraded=",MaterialTooltip">Blurring effect may decrease GUI responsiveness</div>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div></div>
+
+      <span id="dy_status_btn_location_wrap">
+        <button id="dy_status_btn_open_location" class="dy_status_toolbtn mdl-button mdl-js-button mdl-button--icon" data-upgraded=",MaterialButton">
+          <i class="sbar-icon-folder-open"></i>
+        </button>
+        <button id="dy_status_btn_change_location" class="dy_status_toolbtn mdl-button mdl-js-button mdl-button--icon" data-upgraded=",MaterialButton">
+          <i class="sbar-icon-folder-set"></i>
+        </button>
+      </span>
+
+      <span id="dy_status_bgbusy" style="display:none;width:16px;padding-left:6px">
+        <img width="16" height="16" src="chrome-extension://mciiogijehkdemklbdcbfkefimifhecn/icons/loading16.svg">
+      </span>
+      <span id="dy_status_queue">0 items</span>
+      <span id="dy_status_downloading"></span>
+
+      <span id="dy_status_table_switcher">
+        <div class="switch status-tooltip focus-click" id="dy_status_table_switcher_tooltip" style="display:inline-block" tabindex="0">
+            <input type="radio" class="switch-input" name="ui_table_list" value="list" id="list">
+            <label for="list" class="switch-label switch-label-off">
+              <i class="sbar-icon-list"></i>
+            </label>
+            <input type="radio" class="switch-input" name="ui_table_list" value="table" id="table">
+            <label for="table" class="switch-label switch-label-on">
+              <i class="sbar-icon-table"></i>
+            </label>
+            <span class="switch-selection focus-click-target"></span>
+        </div>
+      </span>
+
+      <button id="dy_status_btn_sort" class="dy_status_toolbtn mdl-button mdl-js-button mdl-button--icon" data-upgraded=",MaterialButton">
+        <i class="sbar-icon-sort"></i>
+      </button>
+      
+      <div class="mdl-menu__container is-upgraded"><div class="mdl-menu__outline mdl-menu--top-right"></div><ul id="dropdown-sort" for="dy_status_btn_sort" tabindex="-1" class="mdl-menu mdl-menu--top-right mdl-js-menu" data-upgraded=",MaterialMenu">
+        <li class="mdl-menu__item mdl-menu__item-no-close" tabindex="0">
+          <div class="sort-row-wrap" data-sortcol="state">
+            <span>Status</span>
+          </div>
+        </li>
+        <li class="mdl-menu__item mdl-menu__item-no-close" tabindex="0">
+          <div class="sort-row-wrap" data-sortcol="name">
+            <span>Filename</span>
+          </div>
+        </li>
+        <li class="mdl-menu__item mdl-menu__item-no-close" tabindex="0">
+          <div class="sort-row-wrap" data-sortcol="url">
+            <span>URL</span>
+          </div>
+        </li>
+        <li class="mdl-menu__item mdl-menu__item-no-close" tabindex="0">
+          <div class="sort-row-wrap" data-sortcol="size">
+            <span>File size</span>
+          </div>
+        </li>
+        <li class="mdl-menu__item mdl-menu__item-no-close" tabindex="0">
+          <div class="sort-row-wrap" data-sortcol="progress">
+            <span>Progress</span>
+          </div>
+        </li>
+        <li class="mdl-menu__item mdl-menu__item-no-close" tabindex="0">
+          <div class="sort-row-wrap sorted-down" data-sortcol="time_add">
+            <span>Create time</span>
+          </div>
+        </li>
+       </ul></div>
+
+      <button id="dy_status_btn_clear" class="dy_status_toolbtn mdl-button mdl-js-button mdl-button--icon" data-upgraded=",MaterialButton">
+        <i class="sbar-icon-trash"></i>
+      </button>
+      
+      <div class="mdl-menu__container is-upgraded"><div class="mdl-menu__outline mdl-menu--top-right"></div><ul id="dropdown-clear" for="dy_status_btn_clear" tabindex="-1" class="mdl-menu mdl-menu--top-right mdl-js-menu" data-upgraded=",MaterialMenu">
+        <li class="mdl-menu__line-item">
+          <label for="cb_clear_file" class="mdl-checkbox mdl-js-checkbox is-upgraded" data-upgraded=",MaterialCheckbox">
+            <input class="mdl-checkbox__input" type="checkbox" id="cb_clear_file">
+            <span class="mdl-checkbox__label">Delete from disk</span>
+          <span class="mdl-checkbox__focus-helper"></span><span class="mdl-checkbox__box-outline"><span class="mdl-checkbox__tick-outline"></span></span></label>
+        </li>
+        <li class="mdl-menu__divider"></li>
+        <li class="mdl-menu__item" tabindex="0"><a id="btn_clear_fmissing">Clear tasks with missing files</a></li>
+        <li class="mdl-menu__item" tabindex="0"><a id="btn_clear_finished">Clear completed tasks</a></li>
+        <li class="mdl-menu__item" tabindex="0"><a id="btn_clear_failed">Clear failed tasks</a></li>
+        <li class="mdl-menu__item" tabindex="0"><a id="btn_clear_all">Clear all</a></li>
+        <li class="mdl-menu__divider"></li>
+        <li class="mdl-menu__panel">
+          <div>
+            <span>Schedule</span>
+            <i class="md-qmark material-icons" id="qm-autoClearSchedule">live_help</i>
+            <div for="qm-autoClearSchedule" class="md-qmark-tip mdl-tooltip mdl-tooltip--large mdl-tooltip--top" data-upgraded=",MaterialTooltip">Automatically clear tasks from the list, but keep files on disk</div>
+          </div>
+          <div>
+            <select id="autoclear_type">
+              <option value="finished">Clear completed tasks</option>
+              <option value="interrupted">Clear failed tasks</option>
+              <option value="both">Clear all</option>
+            </select>
+          </div>
+          <div>
+            <select id="autoclear_timer">
+              <option value="-1">Never</option>
+              <option value="5">Every 5 minutes</option>
+              <option value="30">Every 30 minutes</option>
+              <option value="300">Every 5 hours</option>
+              <option value="1440">Every 24 hours</option>
+              <option value="4320">Every 3 days</option>
+              <option value="10080">Every 7 days</option>
+              <option value="43200">Every 30 days</option>
+            </select>
+          </div>
+        </li>
+      </ul></div>
+
+    </div>
+  </div>
+  
+<div id="" class="ui-layout-resizer-none ui-layout-resizer-none-north ui-layout-resizer-none-open ui-layout-resizer-none-north-open" style="position: absolute; padding: 0px; margin: 0px; font-size: 1px; text-align: left; overflow: hidden; z-index: 2; top: 80px; cursor: default; display: none;"></div><div id="" class="ui-layout-resizer-none ui-layout-resizer-none-south ui-layout-resizer-none-open ui-layout-resizer-none-south-open" style="position: absolute; padding: 0px; margin: 0px; font-size: 1px; text-align: left; overflow: hidden; z-index: 2; bottom: 33px; cursor: default; display: none;"></div><div id="" class="ui-layout-resizer-none ui-layout-resizer-none-west ui-layout-resizer-none-open ui-layout-resizer-none-west-open" style="position: absolute; padding: 0px; margin: 0px; font-size: 1px; text-align: left; overflow: hidden; z-index: 2; left: 175px; cursor: default; display: none;"></div><div id="" class="info-panel-resizer info-panel-resizer-east ui-draggable-handle info-panel-resizer-closed info-panel-resizer-east-closed ui-draggable-disabled" aria-disabled="true" title="" style="position: absolute; padding: 0px; margin: 0px; font-size: 1px; text-align: left; overflow: hidden; z-index: 2; right: 0px; cursor: default; display: none;"><div id="" class="info-panel-toggler info-panel-toggler-east info-panel-toggler-closed info-panel-toggler-east-closed" title="Open" style="position: absolute; display: block; padding: 0px; margin: 0px; overflow: hidden; text-align: center; font-size: 1px; z-index: 1; visibility: visible; cursor: pointer;"></div></div></div>
+
+
+
+<div class="mdl-noty__container mdl-noty--center mdl-noty--modal no-keyboard" tabindex="-1"><div class="mdl-noty mdl-card mdl-shadow--2dp mdl-noty--success mdl-noty--center mdl-noty--slide-down-50 is-visible" style="min-width: 500px">        <div class="mdl-noty__body"><div class="mdl-card__title">          <div class="mdl-card__title-text">Welcome!</div></div><div class="mdl-card__supporting-text"><span style="text-align: left;padding-top:6px">Before you start, please take these two extra steps to ensure better experience with Chrono.<br><br>1. Turn off Chrome's Save As dialog so that you won't be asked where to save file for every download. This can be done by clearing the checkbox before <a class="link_settings_saveas">chrome://settings</a> &gt; <em>Downloads</em> &gt; <em>Ask where to save each file before downloading</em>.<br><br>2. Allow Chrono to access file URLs for fast file preview, by ticking the checkbox <em>Allow access to file URLs</em> on <a class="link_enable_file_access">chrome://extensions</a>.<br><br>If you have any question, please visit our Help page and FAQ page.</span></div></div><div class="mdl-card__actions mdl-card--border"><a class="mdl-button mdl-js-button  mdl-noty__primary-action" data-upgraded=",MaterialButton">Import downloads history from Chrome</a><a class="mdl-button mdl-js-button  mdl-noty__primary-action" data-upgraded=",MaterialButton">Start!</a></div></div></div><script type="text/javascript" async="" src="./Chrono Download Manager_files/ga.js"></script></body></html>
